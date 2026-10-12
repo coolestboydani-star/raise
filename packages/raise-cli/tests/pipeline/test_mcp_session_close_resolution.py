@@ -6,6 +6,8 @@ from datetime import datetime
 from pathlib import Path
 from types import SimpleNamespace
 
+import pytest
+
 from raise_cli.cli.commands.session import resolve_close_guard, session_app
 from raise_cli.developer_profile.persistence import save_developer_profile
 from raise_cli.developer_profile.profile import ActiveSession, DeveloperProfile
@@ -16,11 +18,15 @@ from raise_cli.session.index import (
     ActiveSessionPointer,
     read_active_session,
     read_all_active_sessions,
+    read_session_entries,
     resolve_active_session_pointer,
     write_active_session,
 )
-from raise_cli.session.scope import SessionScope
-from raise_cli.storage.worktrees import SqliteWorktreeStore
+from raise_cli.session.scope import SessionScope, resolve_scope
+from raise_cli.storage.worktrees import (
+    SqliteWorktreeStore,
+    WorktreeAmbiguousError,
+)
 
 
 def _pointer(
@@ -268,6 +274,51 @@ def test_session_open_uses_the_caller_worktree_for_its_active_pointer(
     )
     assert resolved == pointer
     assert reason is None
+
+
+def test_closed_worktree_rows_do_not_scope_main_checkout_session(
+    tmp_path: Path,
+) -> None:
+    project = tmp_path / "main-checkout"
+    project.mkdir()
+    worktrees = SqliteWorktreeStore(project)
+    for name in ("stale-first", "stale-second"):
+        worktrees.register(
+            name=name,
+            path=str(project),
+            branch="main",
+            merge_target="main",
+        )
+        worktrees.complete(name)
+    save_developer_profile(DeveloperProfile(name="Tester"))
+
+    from raise_cli.pipeline.lifecycle import ensure_session_lifecycle
+
+    meta = ensure_session_lifecycle(project)
+    pointer = read_active_session(project_root=project, cc_session_id="")
+    entries = read_session_entries("T", project_root=project)
+
+    assert resolve_scope(project).worktree_id == ""
+    assert pointer is not None
+    assert pointer.id == meta.session_id
+    assert pointer.worktree_id == ""
+    assert entries[-1].id == meta.session_id
+
+
+def test_open_worktree_path_ambiguity_fails_closed(tmp_path: Path) -> None:
+    project = tmp_path / "main-checkout"
+    project.mkdir()
+    worktrees = SqliteWorktreeStore(project)
+    for name in ("open-first", "open-second"):
+        worktrees.register(
+            name=name,
+            path=str(project),
+            branch="main",
+            merge_target="main",
+        )
+
+    with pytest.raises(WorktreeAmbiguousError, match="Multiple open worktrees"):
+        worktrees.get_active_by_path(str(project))
 
 
 def test_agent_id_may_resolve_unique_unbound_cross_transport_pointer(

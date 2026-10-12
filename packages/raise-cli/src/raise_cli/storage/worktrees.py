@@ -19,6 +19,10 @@ class WorktreeDuplicateError(Exception):
     """Raised on register() when the name already exists and update=False."""
 
 
+class WorktreeAmbiguousError(Exception):
+    """Raised when a path resolves to more than one open worktree."""
+
+
 @dataclass
 class Worktree:
     """Row representation of a registered git worktree."""
@@ -184,6 +188,31 @@ class SqliteWorktreeStore:
                 f"No worktree registered at {path}. Run `rai worktree register` first."
             )
         return _row_to_worktree(row)
+
+    def get_active_by_path(self, path: str) -> Worktree:
+        """Return the newest open worktree registered at a resolved path.
+
+        Closed historical registrations may reuse the main checkout path.
+        They must not shadow the active registration or scope a new session.
+        """
+        resolved = str(Path(path).resolve())
+        rows = self._conn.execute(
+            "SELECT * FROM worktrees "
+            "WHERE path = ? AND project_id = ? AND status = 'open' "
+            "ORDER BY created_at DESC LIMIT 2",
+            (resolved, self._project_id),
+        ).fetchall()
+        if not rows:
+            raise WorktreeNotFoundError(
+                f"No open worktree registered at {path}. "
+                "Run `rai worktree register` first."
+            )
+        if len(rows) > 1:
+            raise WorktreeAmbiguousError(
+                f"Multiple open worktrees are registered at {path}; "
+                "resolve the duplicate registrations before continuing."
+            )
+        return _row_to_worktree(rows[0])
 
     def complete(self, name: str) -> Worktree:
         """Set status='closed' for the named worktree and prune its graph partition.

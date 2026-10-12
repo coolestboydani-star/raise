@@ -1517,7 +1517,7 @@ def close(  # noqa: C901
             )
 
             wt_store = SqliteWorktreeStore(project=project_path)
-            wt = wt_store.get_by_path(str(resolve_checkout_root()))
+            wt = wt_store.get_active_by_path(str(resolve_checkout_root()))
             wt_store.set_last_session(wt.worktree_id, final_session_id)
         except Exception:  # noqa: BLE001,S110
             pass

@@ -1014,7 +1014,11 @@ def _acquire_lease(project: Path) -> dict[str, Any] | None:
         )
 
         try:
-            wt_id = SqliteWorktreeStore(project).get_by_path(str(project)).worktree_id
+            wt_id = (
+                SqliteWorktreeStore(project)
+                .get_active_by_path(str(project))
+                .worktree_id
+            )
         except WorktreeNotFoundError:
             return {
                 "worktree_id": None,

@@ -64,7 +64,7 @@ def resolve_scope_spec(cwd: Path) -> ScopeSpec:
 
     worktree_id = ""
     try:
-        worktree_id = SqliteWorktreeStore(cwd).get_by_path(str(cwd)).worktree_id
+        worktree_id = SqliteWorktreeStore(cwd).get_active_by_path(str(cwd)).worktree_id
     except WorktreeNotFoundError:
         pass
     except (OSError, Exception):  # noqa: BLE001 — fail-open: degrade to ProjectScope
@@ -96,7 +96,7 @@ def resolve_scope(cwd: Path, agent_session_id: str | None = None) -> SessionScop
         agent_session_id = discover_agent_session_id()
     worktree_id = ""
     try:
-        worktree_id = SqliteWorktreeStore(cwd).get_by_path(str(cwd)).worktree_id
+        worktree_id = SqliteWorktreeStore(cwd).get_active_by_path(str(cwd)).worktree_id
     except WorktreeNotFoundError:
         pass  # not a registered worktree -> main checkout ('')
     except (OSError, sqlite3.Error) as exc:

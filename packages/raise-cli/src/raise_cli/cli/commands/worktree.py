@@ -429,7 +429,7 @@ def context(
         wt = (
             store.get_by_name(name)
             if name
-            else store.get_by_path(str(resolve_checkout_root()))
+            else store.get_active_by_path(str(resolve_checkout_root()))
         )
     except WorktreeNotFoundError as e:
         err_console.print(f"[red]Error:[/red] {e}")

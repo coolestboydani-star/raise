@@ -136,7 +136,7 @@ def holds_worktree_lease(
         return False
     project = Path(path)
     try:
-        worktree = SqliteWorktreeStore(project).get_by_path(str(project))
+        worktree = SqliteWorktreeStore(project).get_active_by_path(str(project))
     except WorktreeNotFoundError:
         # RAISE-15737 Gap B: the main checkout is never registered in
         # ``worktrees`` — fall back to the implicit main-checkout lease.

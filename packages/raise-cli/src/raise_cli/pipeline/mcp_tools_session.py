@@ -717,7 +717,7 @@ async def _session_close_full_impl(
 
         try:
             wt_store = SqliteWorktreeStore(project=project)
-            wt = wt_store.get_by_path(str(project))
+            wt = wt_store.get_active_by_path(str(project))
             wt_store.set_last_session(wt.worktree_id, result.session_id)
         except WorktreeNotFoundError:
             _logger.debug("MCP close outside a registered worktree — no donor to mark")
