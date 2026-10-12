@@ -1,0 +1,571 @@
+{
+  "components": [
+    {
+      "id": "component-mod-raise-cli--adapters",
+      "content": "Auto-generated from code scan (raise-cli--adapters)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--adapters"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--agents",
+      "content": "Auto-generated from code scan (raise-cli--agents)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--agents"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--artifacts",
+      "content": "Auto-generated from code scan (raise-cli--artifacts)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--artifacts"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--auth",
+      "content": "Auto-generated from code scan (raise-cli--auth)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--auth"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--backlog",
+      "content": "Auto-generated from code scan (raise-cli--backlog)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--backlog"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--calibration",
+      "content": "Auto-generated from code scan (raise-cli--calibration)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--calibration"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--cartridges",
+      "content": "Auto-generated from code scan (raise-cli--cartridges)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--cartridges"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--cli",
+      "content": "Auto-generated from code scan (raise-cli--cli)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--cli"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--cockpit",
+      "content": "Auto-generated from code scan (raise-cli--cockpit)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--cockpit"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--compliance",
+      "content": "Auto-generated from code scan (raise-cli--compliance)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--compliance"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--config",
+      "content": "Auto-generated from code scan (raise-cli--config)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--config"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--context",
+      "content": "Auto-generated from code scan (raise-cli--context)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--context"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--core",
+      "content": "Auto-generated from code scan (raise-cli--core)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--core"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--ddd",
+      "content": "Auto-generated from code scan (raise-cli--ddd)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--ddd"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--dev",
+      "content": "Auto-generated from code scan (raise-cli--dev)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--dev"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--developer_profile",
+      "content": "Auto-generated from code scan (raise-cli--developer_profile)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--developer_profile"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--discovery",
+      "content": "Auto-generated from code scan (raise-cli--discovery)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--discovery"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--distillation",
+      "content": "Auto-generated from code scan (raise-cli--distillation)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--distillation"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--docs",
+      "content": "Auto-generated from code scan (raise-cli--docs)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--docs"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--doctor",
+      "content": "Auto-generated from code scan (raise-cli--doctor)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--doctor"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--embeddings",
+      "content": "Auto-generated from code scan (raise-cli--embeddings)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--embeddings"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--eval",
+      "content": "Auto-generated from code scan (raise-cli--eval)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--eval"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--fleet",
+      "content": "Auto-generated from code scan (raise-cli--fleet)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--fleet"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--gates",
+      "content": "Auto-generated from code scan (raise-cli--gates)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--gates"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--git",
+      "content": "Auto-generated from code scan (raise-cli--git)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--git"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--governance",
+      "content": "Auto-generated from code scan (raise-cli--governance)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--governance"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--graph",
+      "content": "Auto-generated from code scan (raise-cli--graph)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--graph"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--harness_review",
+      "content": "Auto-generated from code scan (raise-cli--harness_review)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--harness_review"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--hook_bus",
+      "content": "Auto-generated from code scan (raise-cli--hook_bus)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--hook_bus"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--hooks",
+      "content": "Auto-generated from code scan (raise-cli--hooks)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--hooks"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--impact",
+      "content": "Auto-generated from code scan (raise-cli--impact)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--impact"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--legacy",
+      "content": "Auto-generated from code scan (raise-cli--legacy)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--legacy"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--mcp",
+      "content": "Auto-generated from code scan (raise-cli--mcp)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--mcp"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--memory",
+      "content": "Auto-generated from code scan (raise-cli--memory)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--memory"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--onboarding",
+      "content": "Auto-generated from code scan (raise-cli--onboarding)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--onboarding"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--output",
+      "content": "Auto-generated from code scan (raise-cli--output)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--output"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--pipeline",
+      "content": "Auto-generated from code scan (raise-cli--pipeline)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--pipeline"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--portfolio",
+      "content": "Auto-generated from code scan (raise-cli--portfolio)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--portfolio"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--project_config",
+      "content": "Auto-generated from code scan (raise-cli--project_config)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--project_config"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--publish",
+      "content": "Auto-generated from code scan (raise-cli--publish)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--publish"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--quality",
+      "content": "Auto-generated from code scan (raise-cli--quality)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--quality"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--reliability",
+      "content": "Auto-generated from code scan (raise-cli--reliability)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--reliability"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--schemas",
+      "content": "Auto-generated from code scan (raise-cli--schemas)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--schemas"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--scm",
+      "content": "Auto-generated from code scan (raise-cli--scm)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--scm"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--self_update",
+      "content": "Auto-generated from code scan (raise-cli--self_update)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--self_update"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--session",
+      "content": "Auto-generated from code scan (raise-cli--session)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--session"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--skills",
+      "content": "Auto-generated from code scan (raise-cli--skills)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--skills"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--storage",
+      "content": "Auto-generated from code scan (raise-cli--storage)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--storage"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--task",
+      "content": "Auto-generated from code scan (raise-cli--task)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--task"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--telemetry",
+      "content": "Auto-generated from code scan (raise-cli--telemetry)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--telemetry"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--testing",
+      "content": "Auto-generated from code scan (raise-cli--testing)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--testing"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--tier",
+      "content": "Auto-generated from code scan (raise-cli--tier)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--tier"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--viz",
+      "content": "Auto-generated from code scan (raise-cli--viz)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--viz"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--work_events",
+      "content": "Auto-generated from code scan (raise-cli--work_events)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--work_events"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--work_item",
+      "content": "Auto-generated from code scan (raise-cli--work_item)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--work_item"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--workspace",
+      "content": "Auto-generated from code scan (raise-cli--workspace)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--workspace"
+      }
+    },
+    {
+      "id": "component-mod-raise-cli--worktree",
+      "content": "Auto-generated from code scan (raise-cli--worktree)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-cli--worktree"
+      }
+    },
+    {
+      "id": "component-mod-raise-core--cartridges",
+      "content": "Auto-generated from code scan (raise-core--cartridges)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-core--cartridges"
+      }
+    },
+    {
+      "id": "component-mod-raise-core--discovery",
+      "content": "Auto-generated from code scan (raise-core--discovery)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-core--discovery"
+      }
+    },
+    {
+      "id": "component-mod-raise-core--fleet",
+      "content": "Auto-generated from code scan (raise-core--fleet)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-core--fleet"
+      }
+    },
+    {
+      "id": "component-mod-raise-core--graph",
+      "content": "Auto-generated from code scan (raise-core--graph)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-core--graph"
+      }
+    },
+    {
+      "id": "component-mod-raise-core--runtime",
+      "content": "Auto-generated from code scan (raise-core--runtime)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-core--runtime"
+      }
+    },
+    {
+      "id": "component-mod-raise-core--workflow",
+      "content": "Auto-generated from code scan (raise-core--workflow)",
+      "source_file": null,
+      "created": "2026-10-12T11:44:29.504893+00:00",
+      "metadata": {
+        "source_module_id": "mod-raise-core--workflow"
+      }
+    }
+  ]
+}

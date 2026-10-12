@@ -1,0 +1,41 @@
+version: '1.0'
+project:
+  name: raise
+  project_type: brownfield
+  language: python
+  test_command: uv run pytest --tb=short
+  lint_command: uv run ruff check
+  type_check_command: uv run pyright
+  format_command: uv run ruff format --check
+  code_file_count: 904
+  detected_at: '2026-10-12T12:19:05.047161Z'
+  apps:
+  - name: raise-cli
+    path: packages/raise-cli
+    test_command: uv run pytest --tb=short packages/raise-cli
+    lint_command: uv run ruff check packages/raise-cli
+    type_check_command: uv run pyright packages/raise-cli
+    format_command: uv run ruff format --check packages/raise-cli
+  - name: raise-core
+    path: packages/raise-core
+    test_command: uv run pytest --tb=short packages/raise-core
+    lint_command: uv run ruff check packages/raise-core
+    type_check_command: uv run pyright packages/raise-core
+    format_command: uv run ruff format --check packages/raise-core
+  code:
+    root_glob: packages/*/src/
+branches:
+  scm: github
+  development: main
+  main: main
+  release_lines: []
+graph:
+  document_sources:
+    - governance/**/*.md
+    - work/PIT-*/*.md
+ide:
+  type: codex
+agents:
+  types:
+  - codex
+protocol_compliance: []

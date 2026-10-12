@@ -1,0 +1,7 @@
+project: raise
+languages: [python]
+root_dirs: [packages/raise-cli/src, packages/raise-core/src]
+entry_points: [raise_cli.cli.main, raise_cli.pipeline.mcp_server]
+scan_files: 906
+scan_symbols: 8378
+detected_at: 2026-10-12

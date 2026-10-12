@@ -1,0 +1,13 @@
+display_name: Repository Knowledge
+name: repo
+schema:
+  class_name: GraphNode
+  module: raise_core.graph.models
+snapshot: true
+source:
+  authority: local
+  generator: raise_core.cartridges.repo:generate_repo_cartridge
+  refresh: signal
+  type: derived
+symbol_depth: functions
+version: 1.0.0

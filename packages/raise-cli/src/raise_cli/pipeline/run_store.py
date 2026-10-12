@@ -418,8 +418,14 @@ def get_run_store() -> PipelineRunStore:
 
     if _is_http_request():
         from mcp.server.auth.middleware.auth_context import get_access_token
-        from raise_server.mcp_mount import get_mcp_session_factory
-        from raise_server.pipeline.run_store_db import PostgresRunStore
+
+        # raise_server is shipped separately from the public/community CLI.
+        from raise_server.mcp_mount import (  # type: ignore[reportMissingImports]
+            get_mcp_session_factory,
+        )
+        from raise_server.pipeline.run_store_db import (  # type: ignore[reportMissingImports]
+            PostgresRunStore,
+        )
 
         token: Any = get_access_token()
         if token is None:
