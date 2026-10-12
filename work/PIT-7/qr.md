@@ -32,7 +32,8 @@ None.
 - Pyright: 0 errors, 0 warnings, 0 informations.
 - Binary smoke checks: 52 gates and 36 MCP tools.
 - Installed `rai doctor --json --category session` in Pitagoras: 2 passed, 0 warnings, 0 errors; active session `S-D-261012-1137-DD68` resolves through CLI and MCP.
-- Executable-level CLI-open/MCP-close and MCP-open/CLI-close both passed before the final duplicate-open guard. The current build passes binary smoke checks and doctor.
+- Current executable-level cross-transport verification in an isolated Git checkout passed both directions: CLI-open/MCP-close and MCP-open/CLI-close. Each adapter reported successful closure of the exact session ID opened by the other.
+- PR #137 GitGuardian Security Checks: passed.
 
 ## Verdict
 
