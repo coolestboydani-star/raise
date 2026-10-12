@@ -601,7 +601,10 @@ async def _session_open_impl(cwd: str = "", include_bundle: bool = True) -> str:
 
 
 async def _session_close_full_impl(
-    state_json: str, cwd: str = "", agent_session_id: str | None = None
+    state_json: str,
+    cwd: str = "",
+    agent_session_id: str | None = None,
+    rai_session_id: str | None = None,
 ) -> str:
     _root = _caller_context.require_caller_cwd(cwd, "raise_session_close_full")
     if isinstance(_root, dict):
@@ -624,17 +627,17 @@ async def _session_close_full_impl(
 
         profile = load_developer_profile() or DeveloperProfile(name="unknown")
         agent_uuid = discover_agent_session_id(override=agent_session_id)
-        if not agent_uuid:
-            return json.dumps(
-                {
-                    "status": "error",
-                    "reason": "No active session — run rai session start first",
-                }
-            )
-        from raise_cli.session.index import read_active_session
+        from raise_cli.session.index import resolve_active_session_pointer
 
-        pointer = read_active_session(project_root=project, cc_session_id=agent_uuid)
-        raise_session_id = pointer.id if pointer else None
+        pointer, resolution_error = resolve_active_session_pointer(
+            project,
+            rai_session_id=rai_session_id,
+            agent_session_id=agent_uuid,
+        )
+        if pointer is None:
+            return json.dumps({"status": "error", "reason": resolution_error})
+        raise_session_id = pointer.id
+        lease_session_id = pointer.cc_session_id or agent_uuid or raise_session_id
         result = process_session_close(close_input, profile, project, raise_session_id)
         with suppress(Exception):
             _emit_session_topic(kind="lifecycle", topic="session-close")
@@ -656,7 +659,7 @@ async def _session_close_full_impl(
             wt_id = resolve_worktree_for_session(project, project)
             if wt_id:
                 lease_store = SqliteLeaseStore(project)
-                release_session_lease(lease_store, wt_id, agent_uuid)
+                release_session_lease(lease_store, wt_id, lease_session_id)
 
         if not result.success:
             return json.dumps({"status": "error", "reason": "; ".join(result.messages)})
@@ -700,6 +703,7 @@ async def _session_close_full_impl(
                 branch=branch,
             ),
             project_root=project,
+            agent_session_id=pointer.cc_session_id,
         )
 
         # Worktree donor bookkeeping — parity with CLI close
@@ -757,7 +761,10 @@ async def raise_session_open(cwd: str = "", include_bundle: bool = True) -> str:
 
 @local_only
 async def raise_session_close_full(
-    state_json: str, cwd: str = "", agent_session_id: str | None = None
+    state_json: str,
+    cwd: str = "",
+    agent_session_id: str | None = None,
+    rai_session_id: str | None = None,
 ) -> str:
     """Composite session close: atomic structured close via CloseInput JSON.
 
@@ -779,7 +786,14 @@ async def raise_session_close_full(
             (S15457.2). Inert under HTTP transport / server credentials.
         agent_session_id: Explicit session ID from pipeline context (RAISE-9886).
             Overrides env discovery when the MCP server env is frozen (subagent).
+        rai_session_id: Explicit RaiSE session ID returned by
+            ``raise_session_open``. Use this across transports when available;
+            otherwise the tool resolves a unique active pointer in this
+            project/worktree and fails closed when the choice is ambiguous.
     """
     return await _session_close_full_impl(
-        state_json=state_json, cwd=cwd, agent_session_id=agent_session_id
+        state_json=state_json,
+        cwd=cwd,
+        agent_session_id=agent_session_id,
+        rai_session_id=rai_session_id,
     )

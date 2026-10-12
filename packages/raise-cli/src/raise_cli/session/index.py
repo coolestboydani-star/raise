@@ -62,6 +62,7 @@ def write_session_entry(
     entry: SessionIndexEntry,
     *,
     project_root: Path | None = None,
+    agent_session_id: str | None = None,
 ) -> Path:
     """Append a session entry to the SQLite index.
 
@@ -69,6 +70,9 @@ def write_session_entry(
         prefix: Developer prefix (e.g., "E").
         entry: Session index entry to write.
         project_root: Project root path. Defaults to current directory.
+        agent_session_id: Explicit agent/runtime session ID. Overrides ambient
+            runtime discovery when a lifecycle is completed through a different
+            adapter.
 
     Returns:
         Path to the database file.
@@ -88,7 +92,7 @@ def write_session_entry(
     # id stays '' — never a matchable key (D1); main checkout is '' (D3).
     from raise_cli.session.scope import resolve_scope
 
-    scope = resolve_scope(root)
+    scope = resolve_scope(root, agent_session_id)
 
     existing = conn.execute(
         "SELECT state_json, session_number FROM sessions WHERE project_id = ? AND session_id = ?",
@@ -419,6 +423,69 @@ def read_all_active_sessions(
         except (ValueError, KeyError):
             logger.warning("Malformed active session pointer, skipping")
     return results
+
+
+def resolve_active_session_pointer(
+    project_root: Path,
+    *,
+    rai_session_id: str | None = None,
+    agent_session_id: str | None = None,
+) -> tuple[ActiveSessionPointer | None, str | None]:
+    """Resolve one active pointer in the caller's project and worktree.
+
+    Prefer an explicit RaiSE session ID, then an exact agent session ID. If
+    adapters disagree about the agent ID, a unique unbound pointer remains
+    resolvable. With no exact identity, accept only a unique pointer in the
+    current worktree; ambiguity fails closed.
+    """
+    root = project_root.resolve()
+    from raise_cli.session.scope import resolve_scope
+
+    scope = resolve_scope(root, agent_session_id or "")
+    scoped = [
+        pointer
+        for pointer in read_all_active_sessions(project_root=root)
+        if pointer.worktree_id == scope.worktree_id
+    ]
+
+    if rai_session_id:
+        pointer = next((p for p in scoped if p.id == rai_session_id), None)
+        if pointer is None:
+            return (
+                None,
+                f"No active session '{rai_session_id}' in this project/worktree. "
+                "Run rai-session-start here or check the supplied session ID.",
+            )
+        return pointer, None
+
+    if agent_session_id:
+        exact = [p for p in scoped if p.cc_session_id == agent_session_id]
+        if len(exact) == 1:
+            return exact[0], None
+        if len(exact) > 1:
+            candidates = exact
+        else:
+            # A session opened through a transport without runtime identity
+            # can still be closed through a transport that has one.
+            candidates = [p for p in scoped if not p.cc_session_id]
+    else:
+        candidates = scoped
+
+    if len(candidates) == 1:
+        return candidates[0], None
+    if not candidates:
+        return (
+            None,
+            f"No active session for '{root}' in the current worktree. "
+            "Run rai-session-start first.",
+        )
+
+    ids = ", ".join(sorted(p.id for p in candidates))
+    return (
+        None,
+        "Multiple active sessions in the current worktree; no session was closed. "
+        f"Pass the intended rai_session_id explicitly. Candidates: {ids}.",
+    )
 
 
 def release_session_lease_by_rai_id(

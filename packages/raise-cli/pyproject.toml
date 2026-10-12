@@ -178,6 +178,7 @@ graph-annotation-scoping-drift = "raise_cli.doctor.checks.graph_annotations:Grap
 update = "raise_cli.doctor.checks.update:UpdateCheck"
 worktrees = "raise_cli.doctor.checks.worktrees:WorktreesCheck"
 session-index = "raise_cli.doctor.checks.session_index:SessionIndexCheck"
+session-routing = "raise_cli.doctor.checks.session_routing:SessionRoutingCheck"
 hooks = "raise_cli.doctor.checks.hooks:HooksCheck"
 
 [project.entry-points."rai.adapters.pm"]

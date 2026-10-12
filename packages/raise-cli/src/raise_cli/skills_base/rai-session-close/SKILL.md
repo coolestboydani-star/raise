@@ -81,7 +81,12 @@ narrative); `next_session_prompt` is the single most valuable field.
 ### Step 2: Close (one call)
 
 Use the `raise_session_close_full` MCP tool with state_json="{the JSON above}",
-cwd="{project_or_worktree_path}".
+cwd="{project_or_worktree_path}". When the active session context includes the
+RaiSE session ID returned by `raise_session_open`, also pass it as
+`rai_session_id`. Do not pass that RaiSE ID as `agent_session_id`; they are
+different identifiers. If no RaiSE ID is available, the tool resolves the
+only active session in this project/worktree and stops without closing if the
+choice is ambiguous.
 If MCP tools are not available, fall back to:
 
 ```bash

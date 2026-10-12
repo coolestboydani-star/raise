@@ -69,6 +69,10 @@ If `payload.guardrails` is present: when `status == "ok"`, the `items` list cont
 ### Step 2: Handle the report
 
 Every check returns `status: ok|warn|blocked` with structured data.
+When the open result contains `meta.session_id` (or
+`rai_meta.rai_session_id`), retain it as the RaiSE `session_id` for this
+conversation. It is the value to pass as `rai_session_id` when closing; it is
+not an `agent_session_id`.
 
 | Condition | Action |
 |-----------|--------|
@@ -115,6 +119,7 @@ pending decisions. Propose focus from pending items > current story > deadlines.
 ```
 ## Session: YYYY-MM-DD
 **Context:** [Release →] [Epic] → [Story], [phase]
+**Session ID:** {session_id, when returned}
 **Worktree:** {worktree_id} — {workitem_id} (or "None")
 **Focus:** [proposed goal]
 **MCP:** [{configured} MCP configured]  (omit line if total = 0)
