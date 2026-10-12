@@ -14,11 +14,13 @@ from raise_cli.doctor.models import CheckStatus, DoctorContext
 from raise_cli.pipeline import mcp_tools_session
 from raise_cli.session.index import (
     ActiveSessionPointer,
+    read_active_session,
     read_all_active_sessions,
     resolve_active_session_pointer,
     write_active_session,
 )
 from raise_cli.session.scope import SessionScope
+from raise_cli.storage.worktrees import SqliteWorktreeStore
 
 
 def _pointer(
@@ -238,6 +240,34 @@ def test_real_open_can_be_closed_by_mcp_without_runtime_id(
     assert response["status"] == "ok"
     assert response["session_id"] == session_id
     assert read_all_active_sessions(project_root=tmp_path) == []
+
+
+def test_session_open_uses_the_caller_worktree_for_its_active_pointer(
+    tmp_path: Path,
+) -> None:
+    project = tmp_path / "linked-checkout"
+    project.mkdir()
+    worktree = SqliteWorktreeStore(project).register(
+        name="readiness-check",
+        path=str(project),
+        branch="story/readiness-check",
+        merge_target="main",
+    )
+    save_developer_profile(DeveloperProfile(name="Tester"))
+
+    from raise_cli.pipeline.lifecycle import ensure_session_lifecycle
+
+    meta = ensure_session_lifecycle(project)
+    pointer = read_active_session(project_root=project, cc_session_id="")
+
+    assert pointer is not None
+    assert pointer.id == meta.session_id
+    assert pointer.worktree_id == worktree.worktree_id
+    resolved, reason = resolve_active_session_pointer(
+        project, rai_session_id=meta.session_id
+    )
+    assert resolved == pointer
+    assert reason is None
 
 
 def test_agent_id_may_resolve_unique_unbound_cross_transport_pointer(

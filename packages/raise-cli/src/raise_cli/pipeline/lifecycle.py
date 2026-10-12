@@ -205,7 +205,7 @@ def ensure_session_lifecycle(
         from raise_cli.storage.worktrees import SqliteWorktreeStore
 
         wt_store = SqliteWorktreeStore(project=project_path)
-        _wt = wt_store.get_by_path(str(resolve_checkout_root()))
+        _wt = wt_store.get_by_path(str(resolve_checkout_root(project_path)))
         if _wt.status == "open":
             active_worktree = _wt
             _wt_id = _wt.worktree_id
